@@ -1,5 +1,8 @@
 package Transport;
 
+import java.security.Key;
+import java.time.LocalDate;
+
 public class Car {
 
     private final String brand;
@@ -14,6 +17,9 @@ public class Car {
     private String regNumber = "х000хх000";
     private final int seatNumber;
     private boolean summerTyre;
+
+    private Key key;
+    private Insurance insurance;
 
     public Car(String brand,
                String model,
@@ -169,9 +175,25 @@ public class Car {
         this.summerTyre = summerTyre;
     }
 
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
     public void checkNumber() {
 
-        if (this.regNumber.matches("[a-z]\\d{3}[a-z]{2}\\d{3}")) {
+        if (this.regNumber.matches("[а-я]\\d{3}[а-я]{2}\\d{3}")) {
             this.regNumber = this.regNumber;
         } else {
             this.regNumber = "неверный формат номера";
@@ -179,4 +201,32 @@ public class Car {
 
     }
 
+    public static class Key {
+        private final boolean remoteStartEngine;
+        private final boolean noKeyAccess;
+
+        public Key(boolean remoteStartEngine, boolean noKeyAccess) {
+            this.remoteStartEngine = remoteStartEngine;
+            this.noKeyAccess = noKeyAccess;
+        }
+    }
+
+    public static class Insurance {
+        private final LocalDate insValidity;
+        private final double insPrice;
+        private final String insNumber;
+
+        public Insurance(LocalDate insValidity, double insPrice, String insNumber) {
+            this.insValidity = insValidity;
+            if (insValidity.isBefore(LocalDate.now())) {
+                System.out.println("Страховка заканчивается");
+            }
+            if (insNumber.length() != 9) {
+                System.out.println("неправильный формат номера");
+            }
+            this.insPrice = insPrice;
+            this.insNumber = insNumber;
+        }
+    }
 }
+

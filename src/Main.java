@@ -1,22 +1,23 @@
 import Transport.Car;
+import Transport.Car.Key;
+import Transport.Car.Insurance;
 
 public class Main {
     public static void main(String[] args) {
-
         Car lada = new Car(null, "Granta", 1.7, null, 2015,
-                "Россия", "механика", "хетчбэк", "e222xx05",
+                "Россия", "механика", "хетчбэк", "х111ам05",
                 5, true);
         Car audi = new Car("Audi", "A8", 3.0, "чёрный", 2020,
-                "Германия", "автомат", "седан", "a111mp198",
+                "Германия", "автомат", "седан", "а111мр198",
                 0, false);
         Car bmw = new Car("BMW", "Z8", 3.0, "чёрный", 2021,
-                "Германия", "автомат", "седан", "o666aa157",
+                "Германия", "автомат", "седан", "о666аа157",
                 5, false);
         Car kia = new Car("Kia", "Sportage", 2.4, "голубой", 2018,
-                "Южная Корея", "механика", "кроссовер", "a985mm345",
+                "Южная Корея", "механика", "кроссовер", "а985мм345",
                 0, true);
         Car hyundai = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016,
-                "Южная Корея", "механика", "седан", "999mp545",
+                "Южная Корея", "механика", "седан", "999мр545",
                 5, true);
 
         lada.car();
@@ -30,6 +31,7 @@ public class Main {
 
         hyundai.checkNumber();
         System.out.println(hyundai.getRegNumber());
+
 
     }
 }
